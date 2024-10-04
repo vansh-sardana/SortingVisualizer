@@ -6,9 +6,14 @@ const Bar = ({length, index, color, changeArray}) => {
   useEffect(()=>{
     setLen(length);
   }, [length]);
-  const colors= [['rgba(61, 90, 241, 0.5)', 'rgba(61, 90, 241, 0.2)'],
-            ['rgba(255, 48, 79, 1)', 'rgba(255, 48, 79, 0.5)'],
-            ['rgba(131, 232, 90, 0.5)', 'rgba(131, 232, 90, 0.2)']];
+  
+  const colors = [
+    ['rgba(61, 90, 241, 0.5)', 'rgba(61, 90, 241, 0.2)'], // Blue
+    ['rgba(255, 48, 79, 1)', 'rgba(255, 48, 79, 0.5)'],   // Red
+    ['rgba(131, 232, 90, 0.5)', 'rgba(131, 232, 90, 0.2)'], // Green
+    ['rgba(255, 221, 51, 0.7)', 'rgba(255, 221, 51, 0.4)']  // Yellow
+  ];
+  
 
   const inputStyle= {
     position: 'relative',
@@ -37,13 +42,16 @@ const Bar = ({length, index, color, changeArray}) => {
     top: 225
   }
   const incHandler=()=>{
-    setLen(len+1);
-    changeArray(len+1, index);
+    valueSettler(len+1);
   }
   const decHandler=()=>{
-    setLen(len-1);
-    changeArray(len-1, index);
+    valueSettler(len-1);
   }
+
+  const valueSettler= (val)=>{
+    changeArray(val > 200 ? 200 : (val < 50 ? 50 : val), index);
+    setLen(val < 50 ? 50 : (val > 200 ? 200 : val));
+  };
 
   const handleChange= (e)=>{
     let val= e.target.value;
@@ -53,10 +61,7 @@ const Bar = ({length, index, color, changeArray}) => {
       return;
     }
     val= parseInt(e.target.value);
-    (val>200)? changeArray(200, index):changeArray(val, index);
-    (val<50)? changeArray(50, index):changeArray(val, index);
-    (val<50)? setLen(50):setLen(val);
-    (val>200)? setLen(200):setLen(val);
+    valueSettler(val);
   }
   return (
       <div className='bar'>

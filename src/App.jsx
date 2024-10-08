@@ -11,6 +11,7 @@ import quickSort from './algorithms/quicksort';
 import run from './runAlgorithms/run';
 import selectionSort from './algorithms/selectionsort';
 import mergeSort from './algorithms/mergesort';
+import Board from './components/Board'
 
 
 const App = () => {
@@ -107,9 +108,9 @@ const App = () => {
     setIsSorting(false);
   }
   return (
-    <div className='App bg-[#111] min-w-full min-h-[100vh]'>
-      <div className="nunito-700 text-center text-6xl text-white p-10">Sorting Visualizer</div>
-      <div className="frame">
+    <div className='App relative bg-[#111] min-w-full min-h-[100vh] flex flex-col items-center'>
+      <div className="nunito-700 text-center text-6xl text-white p-10 relative z-20 bg-transparent">Sorting Visualizer</div>
+      <div className="frame relative z-20">
         <div className="barsDiv container card bg-[#1d1d1d] h-[400px] p-[70px] pb-[110px] w-fit m-0">
           {
             arrProp.arr.map((value, index) => (
@@ -118,7 +119,7 @@ const App = () => {
           }
         </div>
       </div>
-      <div className="control-panel flex flex-col gap-2 nunito-700">
+      <div className="control-panel flex flex-col gap-2 nunito-700 relative z-20">
         <div className='flex'>
           <div className="algorithm-selection text-white bg-transparent m-5">
             <label htmlFor="algorithm-select">Choose Algorithm: </label>
@@ -147,6 +148,7 @@ const App = () => {
         </div>
       </div>
       <div className="panel"></div>
+      <Board/>
     </div>
 
   )

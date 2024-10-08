@@ -8,11 +8,13 @@ const Bar = ({length, index, color, changeArray}) => {
   }, [length]);
   
   const colors = [
-    ['rgba(61, 90, 241, 0.5)', 'rgba(61, 90, 241, 0.2)'], // Blue
-    ['rgba(255, 48, 79, 1)', 'rgba(255, 48, 79, 0.5)'],   // Red
-    ['rgba(131, 232, 90, 0.5)', 'rgba(131, 232, 90, 0.2)'], // Green
-    ['rgba(255, 221, 51, 0.7)', 'rgba(255, 221, 51, 0.4)']  // Yellow
-  ];
+    ['rgba(61, 90, 241, 0.5)', 'rgba(61, 90, 241, 0.2)'],   // Blue shades
+    ['rgba(255, 48, 79, 1)', 'rgba(255, 48, 79, 0.5)'],     // Red shades
+    ['rgba(131, 232, 90, 0.5)', 'rgba(131, 232, 90, 0.2)'], // Green shades
+    ['rgba(255, 221, 51, 0.8)', 'rgba(255, 221, 51, 0.5)'], // Brighter Yellow
+    ['rgba(255, 140, 0, 0.8)', 'rgba(255, 140, 0, 0.5)']    // Deeper Orange
+];
+
   
 
   const inputStyle= {
@@ -85,10 +87,10 @@ const Bar = ({length, index, color, changeArray}) => {
           </div>
         </div>
         <div className="quantity-nav">
-          <div className="quantity-button quantity-up" style={quantity} onClick={incHandler}>
+          <div className="quantity-button quantity-up font-bold text-white hover:opacity-70" style={quantity} onClick={incHandler}>
             {' '}+{' '}
           </div>
-          <div className="quantity-button quantity-down" style={quantity} onClick={decHandler}>
+          <div className="quantity-button quantity-down font-bold text-white hover:opacity-70" style={quantity} onClick={decHandler}>
           {' '}-{' '}
           </div>
         </div>

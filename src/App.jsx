@@ -10,6 +10,8 @@ import insertionSort from './algorithms/insertionsort';
 import quickSort from './algorithms/quicksort';
 import run from './runAlgorithms/run';
 import selectionSort from './algorithms/selectionsort';
+import mergeSort from './algorithms/mergesort';
+
 
 const App = () => {
   //Declarative part
@@ -18,17 +20,18 @@ const App = () => {
     'Insertion Sort': insertionSort,
     'Quick Sort': quickSort,
     'Selection Sort': selectionSort,
+    'Merge Sort': mergeSort,
   }
-  const [algo, setAlgo]= useState("Bubble Sort");
-  const [prop, setProp]= useState({
+  const [algo, setAlgo] = useState("Bubble Sort");
+  const [prop, setProp] = useState({
     count: 10,
-    delay: 500,
+    delay: 1000,
     mini: 50,
     maxi: 200,
   });
-  const timeouts= useRef([]);
+  const timeouts = useRef([]);
   const [isSorting, setIsSorting] = useState(false);
-  const [arrProp, setArrProp]= useState({
+  const [arrProp, setArrProp] = useState({
     arr: [], colorKey: [],
   });
   const obj = {
@@ -45,16 +48,16 @@ const App = () => {
 
   const createArr = () => {
     let temp = [];
-    let colorK=[];
+    let colorK = [];
     for (let i = 0; i < prop.count; i++) {
       temp.push(randomNum(prop.mini, prop.maxi));
       colorK.push(0);
     }
-    setArrProp({arr: temp, colorKey: colorK});
+    setArrProp({ arr: temp, colorKey: colorK });
     setCurr({
-      colorSteps: [], 
-      arraySteps: [], 
-      currStep: 0, 
+      colorSteps: [],
+      arraySteps: [],
+      currStep: 0,
     });
   };
 
@@ -68,17 +71,17 @@ const App = () => {
   };
 
   //To generate the sorting algo steps in form of array
-  const generateSteps= ()=>{
-    let arr= arrProp.arr.slice();
-    let steps= [];
-    let colorSteps= [];
-    let colorKey= arrProp.colorKey.slice();
+  const generateSteps = () => {
+    let arr = arrProp.arr.slice();
+    let steps = [];
+    let colorSteps = [];
+    let colorKey = arrProp.colorKey.slice();
     if (algo === 'Quick Sort') {
       algorithms[algo](arr, 0, arr.length - 1, steps, colorSteps, colorKey);
     } else {
       algorithms[algo](arr, 0, steps, colorSteps, colorKey);
     }
-    setCurr({...curr, arraySteps: steps, colorSteps});
+    setCurr({ ...curr, arraySteps: steps, colorSteps });
   }
   useEffect(() => {
     if (arrProp.arr.length > 0) {
@@ -92,21 +95,22 @@ const App = () => {
     let colorKey = [...arrProp.colorKey];
     colorKey.fill(0);
     setCurr({
-      colorSteps: [], 
-      arraySteps: [], 
-      currStep: 0, 
+      colorSteps: [],
+      arraySteps: [],
+      currStep: 0,
     });
-    setArrProp({arr, colorKey});
+    setArrProp({ arr, colorKey });
   };
-  const startHandler = async() => {
+  const startHandler = async () => {
     setIsSorting(true);
     await run(curr, setArrProp, timeouts);
     setIsSorting(false);
   }
   return (
-    <div className='App'>
+    <div className='App bg-[#111] min-w-full min-h-[100vh]'>
+      <div className="nunito-700 text-center text-6xl text-white p-10">Sorting Visualizer</div>
       <div className="frame">
-        <div className="barsDiv container card">
+        <div className="barsDiv container card bg-[#1d1d1d] h-[400px] p-[70px] pb-[110px] w-fit m-0">
           {
             arrProp.arr.map((value, index) => (
               <Bar length={value} key={index} index={index} color={arrProp.colorKey[index]} changeArray={arrayChange} />
@@ -114,18 +118,21 @@ const App = () => {
           }
         </div>
       </div>
-      <div className="control-panel">
-      <div className="algorithm-selection">
-        <label htmlFor="algorithm-select">Choose Algorithm: </label>
-        <select id="algorithm-select" value={algo} onChange={handleAlgoChange}>
-          {
-            Object.keys(algorithms).map((algo, index) => (
-              <option key={index} value={algo}>{algo}</option>
-            ))
-          }
-        </select>
+      <div className="control-panel flex flex-col gap-2 nunito-700">
+        <div className='flex'>
+          <div className="algorithm-selection text-white bg-transparent m-5">
+            <label htmlFor="algorithm-select">Choose Algorithm: </label>
+            <select id="algorithm-select" value={algo} onChange={handleAlgoChange} className='bg-transparent'>
+              {
+                Object.keys(algorithms).map((algo, index) => (
+                  <option key={index} className='bg-[#111]' value={algo}>{algo}</option>
+                ))
+              }
+            </select>
+          </div>
         </div>
-        <div className="control-buttons">
+
+        <div className="control-buttons text-white bg-transparent">
           <button className='controller'>
             <Backwards></Backwards>
           </button>

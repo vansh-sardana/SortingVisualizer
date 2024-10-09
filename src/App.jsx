@@ -24,9 +24,10 @@ const App = () => {
     'Merge Sort': mergeSort,
   }
   const [algo, setAlgo] = useState("Bubble Sort");
+  const customDelay= useRef(2000);
   const [prop, setProp] = useState({
     count: 10,
-    delay: 1000,
+    delay: 2000,
     mini: 50,
     maxi: 200,
   });
@@ -64,7 +65,7 @@ const App = () => {
 
   useEffect(() => {
     createArr();
-  }, []);
+  }, [prop.count]);
 
   const handleAlgoChange = (e) => {
     setAlgo(e.target.value);
@@ -104,9 +105,12 @@ const App = () => {
   };
   const startHandler = async () => {
     setIsSorting(true);
-    await run(curr, setArrProp, timeouts);
+    await run(curr, setArrProp, prop);
     setIsSorting(false);
   }
+  const optionsChangeHandler = (event) => {
+    setProp({...prop, count: event.target.value});
+  };
   return (
     <div className='App relative bg-[#111] min-w-full min-h-[100vh] flex flex-col items-center'>
       <div className="nunito-700 text-center text-6xl text-white p-10 relative z-20 bg-transparent">Sorting Visualizer</div>
@@ -119,9 +123,9 @@ const App = () => {
           }
         </div>
       </div>
-      <div className="control-panel flex flex-col gap-2 nunito-700 relative z-20">
-        <div className='flex'>
-          <div className="algorithm-selection text-white bg-transparent m-5">
+      <div className="control-panel flex flex-col gap-2 nunito-700 relative z-20 text-white ">
+        <div className='flex gap-10 grow'>
+          <div className="algorithm-selection bg-transparent m-5">
             <label htmlFor="algorithm-select">Choose Algorithm: </label>
             <select id="algorithm-select" value={algo} onChange={handleAlgoChange} className='bg-transparent'>
               {
@@ -130,6 +134,14 @@ const App = () => {
                 ))
               }
             </select>
+          </div>
+          <div className='flex gap-4 justify-center items-center'>
+            <label htmlFor="count">Length</label>
+            <input type="range" name="len" id="count" min="2" max="20" className="slider" step="1" onChange={optionsChangeHandler} value={prop.count} style={{backgroundSize: (prop.count-1)*100/(19)+'% 100%'}}  />
+          </div>
+          <div className='flex gap-4 justify-center items-center'>
+            <label htmlFor="speed">Speed</label>
+            <input type="range" id="speed" min="1" max="20" className="slider" step="1" onChange={(e)=>{setProp({...prop, "delay": (customDelay.current/e.target.value)})}} value={ (customDelay.current/prop.delay)} style={{backgroundSize: (customDelay.current/prop.delay-1)*100/(19)+'% 100%'}}  />
           </div>
         </div>
 

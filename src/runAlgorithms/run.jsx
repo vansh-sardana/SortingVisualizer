@@ -1,11 +1,9 @@
-const run = async (curr, setArrProp) => {
+const run = async (curr, setArrProp, prop) => {
     const { colorSteps, arraySteps } = curr;
     const len = arraySteps.length;
-    console.log(len);
     for (let i = 0; i < len; i++) {
-      console.log("Running step", i);
       setArrProp({arr: arraySteps[i], colorKey: colorSteps[i]});
-      await delay(1000);
+      await delay(prop.delay);
     }
   };
   

@@ -23,6 +23,8 @@
   .container{
     margin: 5em 0;
     display: flex;
+    flex-wrap: wrap;
+    gap: 7rem 0;
     justify-content: center;
     align-items: center;
     height: 220px;

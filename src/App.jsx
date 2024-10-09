@@ -49,6 +49,7 @@ const App = () => {
   };
 
   const createArr = () => {
+    clearTimeouts();
     let temp = [];
     let colorK = [];
     for (let i = 0; i < prop.count; i++) {
@@ -77,7 +78,7 @@ const App = () => {
     let arr = arrProp.arr.slice();
     let steps = [];
     let colorSteps = [];
-    let colorKey = arrProp.colorKey.slice();
+    let colorKey = arrProp.colorKey.slice().fill(0);
     if (algo === 'Quick Sort') {
       algorithms[algo](arr, 0, arr.length - 1, steps, colorSteps, colorKey);
     } else {
@@ -90,6 +91,17 @@ const App = () => {
       generateSteps();
     }
   }, [arrProp.arr, algo]);
+
+  const clearColorKey= ()=>{
+    let blankKey= new Array(prop.count).fill(0);
+    setArrProp({...arrProp, colorKey: blankKey});
+    setCurr({...curr, colorSteps: [blankKey]});
+  };
+
+  const clearTimeouts= ()=>{
+    timeouts.current.forEach((e)=>clearTimeout(e));
+    timeouts.current= [];
+  };
 
   const arrayChange = (value, index) => {
     let arr = [...arrProp.arr];
@@ -104,18 +116,16 @@ const App = () => {
     setArrProp({ arr, colorKey });
   };
   const startHandler = async () => {
-    setIsSorting(true);
-    await run(curr, setArrProp, prop);
-    setIsSorting(false);
+    run(curr, setArrProp, prop, timeouts, clearTimeouts, clearColorKey);
   }
   const optionsChangeHandler = (event) => {
     setProp({...prop, count: event.target.value});
   };
   return (
-    <div className='App relative bg-[#111] min-w-full min-h-[100vh] flex flex-col items-center'>
+    <div className='App relative bg-[#111] min-w-full min-h-[100vh] flex flex-col items-center overflow-hidden'>
       <div className="nunito-700 text-center text-6xl text-white p-10 relative z-20 bg-transparent">Sorting Visualizer</div>
       <div className="frame relative z-20">
-        <div className="barsDiv container card bg-[#1d1d1d] h-[400px] p-[70px] pb-[110px] w-fit m-0">
+        <div className="barsDiv container card bg-[#11d1d] min-h-[400px] h-fit p-[70px] pb-[110px] w-fit m-0">
           {
             arrProp.arr.map((value, index) => (
               <Bar length={value} key={index} index={index} color={arrProp.colorKey[index]} changeArray={arrayChange} />
@@ -123,8 +133,8 @@ const App = () => {
           }
         </div>
       </div>
-      <div className="control-panel flex flex-col gap-2 nunito-700 relative z-20 text-white ">
-        <div className='flex gap-10 grow'>
+      <div className="control-panel flex flex-col gap-2 nunito-700 relative z-20 text-white">
+        <div className='flex gap-10 grow flex-wrap justify-center items-center'>
           <div className="algorithm-selection bg-transparent m-5">
             <label htmlFor="algorithm-select">Choose Algorithm: </label>
             <select id="algorithm-select" value={algo} onChange={handleAlgoChange} className='bg-transparent'>
@@ -141,7 +151,10 @@ const App = () => {
           </div>
           <div className='flex gap-4 justify-center items-center'>
             <label htmlFor="speed">Speed</label>
-            <input type="range" id="speed" min="1" max="20" className="slider" step="1" onChange={(e)=>{setProp({...prop, "delay": (customDelay.current/e.target.value)})}} value={ (customDelay.current/prop.delay)} style={{backgroundSize: (customDelay.current/prop.delay-1)*100/(19)+'% 100%'}}  />
+            <input type="range" id="speed" min="1" max="20" className="slider" step="1" onChange={(e)=>{
+              setProp({...prop, "delay": (customDelay.current/e.target.value)});
+              clearTimeouts();
+              }} value={ (customDelay.current/prop.delay)} style={{backgroundSize: (customDelay.current/prop.delay-1)*100/(19)+'% 100%'}}  />
           </div>
         </div>
 

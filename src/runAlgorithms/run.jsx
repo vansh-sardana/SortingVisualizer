@@ -1,14 +1,17 @@
-const run = async (curr, setArrProp, prop) => {
+const run = (curr, setArrProp, prop, timeouts, clearTimeouts) => {
+  clearTimeouts();
+
+  let touts= [];
     const { colorSteps, arraySteps } = curr;
     const len = arraySteps.length;
     for (let i = 0; i < len; i++) {
-      setArrProp({arr: arraySteps[i], colorKey: colorSteps[i]});
-      await delay(prop.delay);
+      let timeout= setTimeout(()=>{
+        setArrProp({arr: arraySteps[i], colorKey: colorSteps[i]});
+      }, prop.delay*(i+1));
+      touts.push(timeout);
     }
+    timeouts.current= touts;
   };
   
-  const delay = (tmsec) => {
-    return new Promise((resolve) => setTimeout(resolve, tmsec));
-  };
   
   export default run;

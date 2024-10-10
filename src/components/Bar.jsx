@@ -66,7 +66,7 @@ const Bar = ({length, index, color, changeArray}) => {
     valueSettler(val);
   }
   return (
-      <div className='bar'>
+      <div className='bar pointer-events-auto'>
         <div className="side top"></div>
         <div className="side bottom" style={bottom}></div>
         <div className="side right" >

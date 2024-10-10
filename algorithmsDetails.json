@@ -1,0 +1,113 @@
+{
+  "algorithms": {
+    "Bubble Sort": {
+      "details": [
+        "Bubble Sort is a simple comparison-based algorithm.",
+        "It repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.",
+        "The process is repeated until the list is sorted.",
+        "Bubble Sort is inefficient on large lists and mainly useful for educational purposes.",
+        "It has a time complexity of O(n²) in the average and worst cases.",
+        "Bubble Sort is stable as it maintains the relative order of equal elements."
+      ],
+      "complexity": {
+        "best_case": "O(n)",
+        "worst_case": "O(n²)",
+        "average_case": "O(n²)",
+        "space_complexity": "O(1)"
+      },
+      "algorithm": [
+        "1. Start at the beginning of the list.",
+        "2. Compare each pair of adjacent elements.",
+        "3. Swap them if the first is greater than the second.",
+        "4. Move to the next pair and repeat until the end.",
+        "5. The last element will be the largest; repeat for the remaining list."
+      ]
+    },
+    "Quick Sort": {
+      "details": [
+        "Quick Sort is a highly efficient divide-and-conquer algorithm.",
+        "It picks a pivot element, partitions the array into two halves, and recursively sorts them.",
+        "The efficiency depends on the pivot selection strategy.",
+        "It performs well in practice with an average time complexity of O(n log n).",
+        "However, the worst-case time complexity is O(n²) when the pivot is poorly chosen.",
+        "Quick Sort is not stable, as it may change the relative order of equal elements."
+      ],
+      "complexity": {
+        "best_case": "O(n log n)",
+        "worst_case": "O(n²)",
+        "average_case": "O(n log n)",
+        "space_complexity": "O(log n)"
+      },
+      "algorithm": [
+        "1. Pick a pivot element.",
+        "2. Partition the array such that elements less than the pivot are on the left, and greater are on the right.",
+        "3. Recursively apply Quick Sort to the subarrays.",
+        "4. Combine the sorted subarrays with the pivot."
+      ]
+    },
+    "Selection Sort": {
+      "details": [
+        "Selection Sort is an in-place comparison sorting algorithm.",
+        "It divides the list into a sorted and an unsorted region.",
+        "The algorithm repeatedly selects the smallest element from the unsorted region and moves it to the sorted region.",
+        "It is inefficient on large datasets.",
+        "Selection Sort has a time complexity of O(n²) in all cases.",
+        "Selection Sort is not stable, as it can change the relative order of equal elements."
+      ],
+      "complexity": {
+        "best_case": "O(n²)",
+        "worst_case": "O(n²)",
+        "average_case": "O(n²)",
+        "space_complexity": "O(1)"
+      },
+      "algorithm": [
+        "1. Find the smallest element in the unsorted portion of the list.",
+        "2. Swap it with the first unsorted element.",
+        "3. Move the boundary of the sorted and unsorted portions.",
+        "4. Repeat until the entire list is sorted."
+      ]
+    },
+    "Merge Sort": {
+      "details": [
+        "Merge Sort is a divide-and-conquer algorithm that divides the array into halves, sorts them, and merges them back together.",
+        "It guarantees O(n log n) time complexity for all cases.",
+        "Merge Sort is stable and works well with linked lists or data requiring stability.",
+        "It requires additional memory for the temporary subarrays.",
+        "It's preferred for large datasets due to its consistent performance."
+      ],
+      "complexity": {
+        "best_case": "O(n log n)",
+        "worst_case": "O(n log n)",
+        "average_case": "O(n log n)",
+        "space_complexity": "O(n)"
+      },
+      "algorithm": [
+        "1. Divide the array into two halves.",
+        "2. Recursively sort each half.",
+        "3. Merge the two sorted halves back into a single sorted array."
+      ]
+    },
+    "Insertion Sort": {
+      "details": [
+        "Insertion Sort is a simple comparison-based algorithm that builds the sorted list one element at a time.",
+        "It is efficient for small data sets and partially sorted arrays.",
+        "Insertion Sort shifts larger elements to make room for each new element as it's inserted into the correct position.",
+        "It's an in-place, stable sorting algorithm.",
+        "The time complexity is O(n²) in the worst case, but O(n) for nearly sorted arrays."
+      ],
+      "complexity": {
+        "best_case": "O(n)",
+        "worst_case": "O(n²)",
+        "average_case": "O(n²)",
+        "space_complexity": "O(1)"
+      },
+      "algorithm": [
+        "1. Start from the second element, considering the first element as sorted.",
+        "2. Compare the current element to its predecessor.",
+        "3. Shift the larger elements one position to the right.",
+        "4. Insert the current element into its correct position.",
+        "5. Repeat until the entire array is sorted."
+      ]
+    }
+  }
+}

@@ -33,7 +33,7 @@
   .card{
     border-radius: 2em;
     padding: 0 1em;
-    background-color: #818181;
+    /* background-color: #818181; */
     
   }
 
@@ -81,7 +81,7 @@
     background-color: var(--dk-lightbh);
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-    background-image: linear-gradient(0.25turn, var(--dk-lightbh), #837878);
+    background-image: linear-gradient(0.25turn, #8c8383, #544c4c);
     background-repeat: no-repeat;
     rotate: 90deg;
 }

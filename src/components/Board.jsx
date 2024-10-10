@@ -21,7 +21,7 @@ const Board = () => {
   }, []);
   
   return (
-    <div className='flex justify-center items-center w-full flex-wrap absolute top-0 z-10'>
+    <div className='flex justify-center items-center w-full flex-wrap fixed top-0 z-10'>
       {
         Array.from({length: numSquares}).map((_, index)=>{
           return <Square key={index}></Square>

@@ -41,7 +41,7 @@ A dynamic 3D Sorting Visualizer built using React, allowing users to visualize m
 
 ![image](https://github.com/user-attachments/assets/6b1549b9-d878-4cea-8981-f219ede45b83)
 
-
+![image](https://github.com/user-attachments/assets/5276bacf-590d-4891-9db7-65480341b8a9)
 
 
 ## 🛠️ Setup

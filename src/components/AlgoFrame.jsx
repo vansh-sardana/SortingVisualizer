@@ -5,6 +5,10 @@ const AlgoFrame = ({algo}) => {
     const algorithm= algorithms["algorithms"];
     return (
             <div key={algo} className='z-20 text-white mt-10 max-w-[700px] text-justify flex flex-col gap-4 bg-none pointer-events-none'>
+              <div>
+              <div className='w-[full] bg-[#1d1d1d] h-4'></div>
+              <div className='w-[full] bg-white h-1'></div>
+            </div>
               <h3 className='text-3xl font-bold pointer-events-auto text-center'>{algo}</h3>
               <p className='bg-[#f2efef] rounded-md p-5 font-bold text-[#1d1d1d] pointer-events-auto'>{algorithm[algo]?.details?.join(' ')}</p>
               <div className='flex flex-col gap-2 bg-[#1d1d1d] p-4 rounded-md'>
@@ -24,6 +28,11 @@ const AlgoFrame = ({algo}) => {
                     ))}
                 </ol>
             </div>
+            <div>
+              <div className='w-[full] bg-white h-1'></div>
+              <div className='w-[full] bg-[#1d1d1d] h-4'></div>
+            </div>
+            <div className="footer font-bold text-center text-xl p-2 mb-2">Made with ❤️ by Vansh Sardana</div>
             </div>
       );
 }

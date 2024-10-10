@@ -9,6 +9,7 @@ A dynamic 3D Sorting Visualizer built using React, allowing users to visualize m
 - **Color Tracking**: Highlights the bars being compared during sorting for a better understanding of the process.
 - **User-Configurable Speed & Array Length**: Control the animation speed and adjust the array length to customize the visualization.
 - **Detailed Explanations**: Each algorithm comes with an integrated explanation to help users understand the sorting process as they visualize it.
+- **Background Hover Effect**: The background responds to user interaction—pixels light up as you hover over the visualizer, adding a visually appealing touch.
 
 ## 🚀 Tech Stack
 

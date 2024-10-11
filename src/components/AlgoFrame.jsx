@@ -13,11 +13,11 @@ const AlgoFrame = ({algo}) => {
               <p className='bg-[#f2efef] rounded-md p-5 font-bold text-[#1d1d1d] pointer-events-auto'>{algorithm[algo]?.details?.join(' ')}</p>
               <div className='flex flex-col gap-2 bg-[#1d1d1d] p-4 rounded-md'>
                 <h4 className='pointer-events-auto text-center font-bold text-xl'>Complexity:</h4>
-                <ul className='text-left pointer-events-auto flex gap-4'>
-                    <li className='bg-[#f2efef] rounded-md p-5 font-bold text-[#1d1d1d]'>Worst Case: {algorithm[algo].complexity.worst_case}</li>
-                    <li className='bg-[#f2efef] rounded-md p-5 font-bold text-[#1d1d1d]'>Best Case: {algorithm[algo].complexity.best_case}</li>
-                    <li className='bg-[#f2efef] rounded-md p-5 font-bold text-[#1d1d1d]'>Average Case: {algorithm[algo].complexity.average_case}</li>
-                    <li className='bg-[#f2efef] rounded-md p-5 font-bold text-[#1d1d1d]'>Space Complexity: {algorithm[algo].complexity.space_complexity}</li>
+                <ul className='text-left pointer-events-auto flex gap-4 flex-wrap justify-center items-center'>
+                    <li className='bg-[#f2efef] rounded-md p-5 font-bold text-[#1d1d1d] w-[195px]'>Worst Case: {algorithm[algo].complexity.worst_case}</li>
+                    <li className='bg-[#f2efef] rounded-md p-5 font-bold text-[#1d1d1d] w-[195px]'>Best Case: {algorithm[algo].complexity.best_case}</li>
+                    <li className='bg-[#f2efef] rounded-md p-5 font-bold text-[#1d1d1d] w-[195px]'>Average Case: {algorithm[algo].complexity.average_case}</li>
+                    <li className='bg-[#f2efef] rounded-md p-5 font-bold text-[#1d1d1d] w-[195px]'>Space Complexity: {algorithm[algo].complexity.space_complexity}</li>
                 </ul>
               </div>
               <div className='flex flex-col gap-2 bg-[#1d1d1d] p-4 rounded-md'>

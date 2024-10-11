@@ -3,8 +3,10 @@ import './Bar.css'
 
 const Bar = ({length, index, color, changeArray}) => {
   const [len, setLen]= useState(0);
+  const [tempVal, setTempVal]= useState(length);
   useEffect(()=>{
     setLen(length);
+    setTempVal(length);
   }, [length]);
   
   const colors = [
@@ -65,6 +67,15 @@ const Bar = ({length, index, color, changeArray}) => {
     val= parseInt(e.target.value);
     valueSettler(val);
   }
+  const handleKeyUp= (e)=>{
+    if(e.key=='Enter'){
+      handleChange(e);
+    }
+  };
+
+  const handleChangeTemp= (e)=>{
+    setTempVal(e.target.value);
+  };
   return (
       <div className='bar pointer-events-auto'>
         <div className="side top"></div>
@@ -77,8 +88,7 @@ const Bar = ({length, index, color, changeArray}) => {
         </div>
         <div className="side front">
           <div className="color-bar front-color-bar"  style={front_back_right_left}>
-            <input type="number" name="" id="" length={len} style={inputStyle} value={len} onChange={handleChange}/>
-
+            <input type="number" name="" id="" length={len} value={tempVal} style={inputStyle} onChange={handleChangeTemp} onKeyUp={handleKeyUp} onBlur={handleChange} onBlurCapture={handleChange}/>
           </div>
         </div>
         <div className="side back">

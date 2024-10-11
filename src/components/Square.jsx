@@ -30,7 +30,7 @@ const Square = () => {
         boxShadow : `0 0 2px #000`,
     }
   return (
-    <div className='bg-[#111] h-4 w-4 m-[2px] transition-all duration-[1000] ease-linear hover:duration-0' style={hovered? setColor: removeColor} onMouseOver={mouseOnHandler} onMouseOut={mouseOutHandler}></div>
+    <div className='bg-[#111] h-4 w-4 m-[2px] transition-all duration-[1000] ease-linear hover:duration-0' style={hovered? setColor: removeColor} onMouseOver={mouseOnHandler} onMouseOut={mouseOutHandler} onTouchStart={mouseOnHandler} onTouchEnd={mouseOutHandler}></div>
   )
 }
 

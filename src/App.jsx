@@ -127,7 +127,7 @@ const App = () => {
     <div className='App relative bg-[#111] min-w-full min-h-[100vh] flex flex-col items-center overflow-hidden p-3'>
       <h1 className="nunito-700 text-center text-6xl text-white p-10 relative z-20 bg-transparent pointer-events-none sm:text-5xl xs:text-4xl">Sorting Visualizer</h1>
       <div className="frame relative z-20 pointer-events-none">
-        <div className="barsDiv container card bg-[#1d1d1d] min-h-[400px] h-fit p-[70px] pb-[110px] w-fit m-0  pointer-events-none">
+        <div className="barsDiv container card bg-[#1d1d1d] min-h-[400px] h-fit p-[70px] pb-[110px] m-0 max-w-none pointer-events-none md:gap-x-0 sm:gap-x-0 xs:gap-x-0 xs:px-2 lg:pl-16 lg:pr-20">
           {
             arrProp.arr.map((value, index) => (
               <Bar length={value} key={index} index={index} color={arrProp.colorKey[index]} changeArray={arrayChange} />
